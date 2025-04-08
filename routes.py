@@ -27,6 +27,11 @@ def new_task():
     
     return render_template('create_task.html')
 
+@main.route('/task/<int:task_id>', methods=['GET'])
+def view_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    return render_template('view_task.html', task=task)
+
 @main.route('/task/<int:task_id>/edit', methods=['GET', 'POST'])
 def edit_task(task_id):
     task = Task.query.get_or_404(task_id)
@@ -50,7 +55,7 @@ def delete_task(task_id):
     return redirect(url_for('main.index'))
 
 @main.route('/task/<int:task_id>/toogle', methods=['POST'])
-def toogle_task(task_id):
+def toggle_task(task_id):
     task = Task.query.get_or_404(task_id)
     task.completed = not task.completed
     db.session.commit()
