@@ -1,0 +1,26 @@
+{% extends  'base.html' %}
+
+{% block content %}
+    <h2>Task Details</h2>
+
+    <div class="task {% if task.completed %}completed{% endif %}">
+        <h3> {{ task.title }}</h3>
+        <p>{{ task.description }}</p>
+        <p>Created: {{ task.created_at.strftime('%Y-%m-%d %H:%M')}}</p>
+        <p>Status: {% if task.completed %}Completed{% else %}Pending{% endif %}</p>
+
+        <div class="actions">
+            <a href="{{ url_for('main.edit_task', task_id=task.id) }}">Edit</a>
+            <form action="{{ url_for('main.toggle_task', task_id=task.id) }}">
+                <button type="submit">
+                    {% if task.completed %}Mark as Pending{% else %}Mark as Complete{% endif %}
+                </button>
+            </form>
+            <form action="{{ url_for('main.delete_task', task_id=task.id) }}">
+                <button type="submit" class="btn-danger">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
