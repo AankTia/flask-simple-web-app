@@ -1,6 +1,6 @@
-# Building a CRUD Web Application with Python (Flusk): Step-by-Step Guide
+# Building a CRUD Web Application with Python (Flask): Step-by-Step Guide
 
-Comprehensive step-by-step guide for building a CRUD web application with Python (Flusk). This tutorial uses:
+Comprehensive step-by-step guide for building a CRUD web application with Python (Flask). This tutorial uses:
 
 - Flask as the web framework
 - SQLAlchemy for database operations
